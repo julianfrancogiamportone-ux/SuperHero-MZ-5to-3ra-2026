@@ -5,7 +5,7 @@ import java.util.List;
 @Entity
 public class arma {
     @Id
-    @GeneratedValue
+    @GeneratedValue (strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToMany(mappedBy = "armas")
@@ -13,6 +13,7 @@ public class arma {
     private String nombre;
     private int bonificadordanio;
     private float peso;
+    
     public arma(long id, String nombre, int bonificadordanio, float peso) {
         this.id = id;
         this.nombre = nombre;
