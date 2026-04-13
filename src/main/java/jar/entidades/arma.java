@@ -1,8 +1,15 @@
 package jar.entidades;
+import java.util.ArrayList;
 import jakarta.persistence.*;
+import java.util.List;
 @Entity
 public class arma {
-    private long id;
+    @Id
+    @GeneratedValue
+    private Long id;
+
+    @ManyToMany(mappedBy = "armas")
+    private List<peleador> personajes;
     private String nombre;
     private int bonificadordanio;
     private float peso;
