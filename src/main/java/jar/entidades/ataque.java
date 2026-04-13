@@ -1,7 +1,13 @@
 package jar.entidades;
+import java.util.ArrayList;
 import jakarta.persistence.*;
+import java.util.List;
 @Entity
 public class ataque {
+     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @ManyToMany(mappedBy = "ataques")
+    private List<peleador> personajes;
 private long id;
 private String nombre;
 private int costoEnergia;
