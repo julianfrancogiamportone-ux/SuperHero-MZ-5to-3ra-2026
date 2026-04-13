@@ -16,14 +16,21 @@ public class peleador {
         joinColumns = @JoinColumn(name = "peleador_id"),
         inverseJoinColumns = @JoinColumn(name = "arma_id")
     )
+
     private List<arma> armas;
+    @ManyToMany
+    @JoinTable(
+        name = "peleador_ataque",
+        joinColumns = @JoinColumn(name = "peleador_id"),
+        inverseJoinColumns = @JoinColumn(name = "ataque_id")
+    )
+
+    private List<ataque> ataque;
     private String nombre;
     private int puntosVida;
     private int energia;
     private float defensaBase;
     private arma armaEquipada;
-    private ArrayList <arma> inventario;
-    private ArrayList <ataque> habilidades;
     public peleador(long id, String nombre, int puntosVida, int energia, float defensaBase, arma armaEquipada,
             ArrayList<arma> inventario, ArrayList<ataque> habilidades) {
         this.id = id;
@@ -32,8 +39,6 @@ public class peleador {
         this.energia = energia;
         this.defensaBase = defensaBase;
         this.armaEquipada = armaEquipada;
-        this.inventario = inventario;
-        this.habilidades = habilidades;
     }
     public long getId() {
         return id;
@@ -52,12 +57,6 @@ public class peleador {
     }
     public arma getArmaEquipada() {
         return armaEquipada;
-    }
-    public ArrayList <arma>getInventario() {
-        return inventario;
-    }
-    public ArrayList <ataque>getHabilidades() {
-        return habilidades;
     }
     public void setId(long id) {
         this.id = id;
