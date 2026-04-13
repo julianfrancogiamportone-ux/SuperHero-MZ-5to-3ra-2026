@@ -76,11 +76,5 @@ public class peleador {
     public void setArmaEquipada(arma armaEquipada) {
         this.armaEquipada = armaEquipada;
     }
-    public void setInventario(ArrayList <arma> inventario) {
-        this.inventario = inventario;
-    }
-    public void setHabilidades(ArrayList <ataque> habilidades) {
-        this.habilidades = habilidades;
-    }
 }
 
