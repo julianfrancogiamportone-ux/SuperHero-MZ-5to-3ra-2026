@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 
-public class peleador {
+public class Peleador {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
@@ -15,19 +15,19 @@ public class peleador {
     @ManyToMany
     @JoinTable(name = "peleador_arma", joinColumns = @JoinColumn(name = "peleador_id"), inverseJoinColumns = @JoinColumn(name = "arma_id"))
 
-    private List<arma> armas;
+    private List<Arma> armas;
     @ManyToMany
     @JoinTable(name = "peleador_ataque", joinColumns = @JoinColumn(name = "peleador_id"), inverseJoinColumns = @JoinColumn(name = "ataque_id"))
 
-    private List<ataque> ataque;
+    private List<Ataque> ataques;
     private String nombre;
     private int puntosVida;
     private int energia;
     private float defensaBase;
   
 
-    public peleador(long id, String nombre, int puntosVida, int energia, float defensaBase, arma armaEquipada,
-            ArrayList<arma> inventario, ArrayList<ataque> habilidades) {
+    public Peleador(long id, String nombre, int puntosVida, int energia, float defensaBase, Arma armaEquipada)
+    {
         this.id = id;
         this.nombre = nombre;
         this.puntosVida = puntosVida;

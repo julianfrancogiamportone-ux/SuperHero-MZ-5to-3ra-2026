@@ -4,17 +4,17 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class ataque {
+public class Ataque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @ManyToMany(mappedBy = "ataques")
-    private List<peleador> personajes;
+    private List<Peleador> personajes;
     private long id;
     private String nombre;
     private int costoEnergia;
     private int danioBase;
 
-    public ataque(long id, String nombre, int costoEnergia, int danioBase) {
+    public Ataque(long id, String nombre, int costoEnergia, int danioBase) {
         this.id = id;
         this.nombre = nombre;
         this.costoEnergia = costoEnergia;

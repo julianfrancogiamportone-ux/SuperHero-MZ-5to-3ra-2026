@@ -4,18 +4,18 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class arma {
+public class Arma {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToMany(mappedBy = "armas")
-    private List<peleador> personajes;
+    private List<Peleador> personajes;
     private String nombre;
     private int bonificadordanio;
     private float peso;
 
-    public arma(long id, String nombre, int bonificadordanio, float peso) {
+    public Arma(long id, String nombre, int bonificadordanio, float peso) {
         this.id = id;
         this.nombre = nombre;
         this.bonificadordanio = bonificadordanio;
