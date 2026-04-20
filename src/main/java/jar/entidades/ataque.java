@@ -7,9 +7,9 @@ import java.util.List;
 public class Ataque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     @ManyToMany(mappedBy = "ataques")
     private List<Peleador> personajes;
-    private long id;
     private String nombre;
     private int costoEnergia;
     private int danioBase;
