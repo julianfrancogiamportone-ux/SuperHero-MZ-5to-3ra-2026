@@ -16,6 +16,7 @@ public class Peleador {
     @JoinTable(name = "peleador_arma", joinColumns = @JoinColumn(name = "peleador_id"), inverseJoinColumns = @JoinColumn(name = "arma_id"))
 
     private List<Arma> armas;
+   
     @ManyToMany
     @JoinTable(name = "peleador_ataque", joinColumns = @JoinColumn(name = "peleador_id"), inverseJoinColumns = @JoinColumn(name = "ataque_id"))
 
@@ -23,18 +24,18 @@ public class Peleador {
     private String nombre;
     private int puntosVida;
     private int energia;
-    private float defensaBase;
+    private double defensaBase;
   
 
-    public Peleador(long id, String nombre, int puntosVida, int energia, float defensaBase, Arma armaEquipada)
+    public Peleador( String nombre, int puntosVida, int energia, double defensaBase)
     {
-        this.id = id;
         this.nombre = nombre;
         this.puntosVida = puntosVida;
         this.energia = energia;
         this.defensaBase = defensaBase;
-        
     }
+
+
 
     public long getId() {
         return id;
@@ -52,8 +53,12 @@ public class Peleador {
         return energia;
     }
 
-    public float getDefensaBase() {
+    public double getDefensaBase() {
         return defensaBase;
+    }
+    
+    public List<Arma> getArmas() {
+        return armas;
     }
 
    
@@ -77,5 +82,37 @@ public class Peleador {
         this.defensaBase = defensaBase;
     }
 
+    public void setArmas(List<Arma> armas) {
+        this.armas = armas;
+    }
+
+    
+    public List<Ataque> getAtaques() {
+        return ataques;
+    }
+
+
+
+    public void setAtaques(List<Ataque> ataques) {
+        this.ataques = ataques;
+    }
+
+
+
+    public void setDefensaBase(double defensaBase) {
+        this.defensaBase = defensaBase;
+    }
+
+
+
+    public void imprimir(){
+        System.out.println("Peleador: " + nombre);
+        System.out.println("Puntos de Vida: " + puntosVida);
+        System.out.println("Energía: " + energia);
+        System.out.println("Defensa Base: " + defensaBase);
+        System.out.println("Armas:" + armas);
+        
+    }
+ 
     
 }
