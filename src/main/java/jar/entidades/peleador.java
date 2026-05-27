@@ -1,7 +1,4 @@
 package jar.entidades;
-
-import java.util.ArrayList;
-
 import jakarta.persistence.*;
 import java.util.List;
 
@@ -26,9 +23,8 @@ public class Peleador {
     private float defensaBase;
   
 
-    public Peleador(long id, String nombre, int puntosVida, int energia, float defensaBase, Arma armaEquipada)
+    public Peleador(String nombre, int puntosVida, int energia, float defensaBase)
     {
-        this.id = id;
         this.nombre = nombre;
         this.puntosVida = puntosVida;
         this.energia = energia;
@@ -55,8 +51,14 @@ public class Peleador {
     public float getDefensaBase() {
         return defensaBase;
     }
+    public List<Arma> getArmas() {
+        return armas;
+    }
 
-   
+    public List<Ataque> getAtaques() {
+        return ataques;
+    }
+
     public void setId(long id) {
         this.id = id;
     }
@@ -76,6 +78,23 @@ public class Peleador {
     public void setDefensaBase(float defensaBase) {
         this.defensaBase = defensaBase;
     }
+    public void setArmas(List<Arma> armas) {
+        this.armas = armas;
+        
+    }
 
     
+    public void setAtaques(List<Ataque> ataques) {
+        this.ataques = ataques;
+    }
+    
+
+    public void imprimir(){
+        System.out.println("Nombre: " + nombre);
+        System.out.println("Puntos de vida: " + puntosVida);
+        System.out.println("Energia: " + energia);
+        System.out.println("Defensa base: " + defensaBase); 
+        System.out.println("Armas: ");
+    }
 }
+   

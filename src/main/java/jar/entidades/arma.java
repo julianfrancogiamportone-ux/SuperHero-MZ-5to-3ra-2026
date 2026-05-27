@@ -15,8 +15,7 @@ public class Arma {
     private int bonificadordanio;
     private float peso;
 
-    public Arma(long id, String nombre, int bonificadordanio, float peso) {
-        this.id = id;
+    public Arma(String nombre, int bonificadordanio, float peso) {
         this.nombre = nombre;
         this.bonificadordanio = bonificadordanio;
         this.peso = peso;
