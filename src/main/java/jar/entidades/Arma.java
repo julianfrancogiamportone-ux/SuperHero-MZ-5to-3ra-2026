@@ -23,9 +23,7 @@ public class Arma {
 
     }
 
-    public long getId() {
-        return id;
-    }
+  
 
     public String getNombre() {
         return nombre;
@@ -38,11 +36,6 @@ public class Arma {
     public float getPeso() {
         return peso;
     }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }

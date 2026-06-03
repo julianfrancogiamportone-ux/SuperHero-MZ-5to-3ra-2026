@@ -21,10 +21,7 @@ public class Ataque {
         this.danioBase = danioBase;
     }
 
-    public long getId() {
-        return id;
-    }
-
+   
     public String getNombre() {
         return nombre;
     }
@@ -36,11 +33,6 @@ public class Ataque {
     public int getDanioBase() {
         return danioBase;
     }
-
-    public void setId(long id) {
-        this.id = id;
-    }
-
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
