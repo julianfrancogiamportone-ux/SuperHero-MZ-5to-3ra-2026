@@ -16,3 +16,4 @@ return pRepository.findAll();
 public Peleador savePeleador(Peleador peleador) {
 return pRepository.save(peleador);
 }
+}   
