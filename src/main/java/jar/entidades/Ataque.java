@@ -14,6 +14,10 @@ public class Ataque {
     private int costoEnergia;
     private int danioBase;
 
+
+    public Ataque() {
+    }
+
     public Ataque(long id, String nombre, int costoEnergia, int danioBase) {
         this.id = id;
         this.nombre = nombre;

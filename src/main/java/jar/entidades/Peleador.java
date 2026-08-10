@@ -23,16 +23,19 @@ public class Peleador {
     private int puntosVida;
     private int energia;
     private double defensaBase;
-  
+    private String url;
 
-    public Peleador(String nombre, int puntosVida, int energia, double defensaBase)
+    public Peleador() {
+    }
+
+    public Peleador(String nombre, int puntosVida, int energia, double defensaBase, String url)
     {
         
         this.nombre = nombre;
         this.puntosVida = puntosVida;
         this.energia = energia;
         this.defensaBase = defensaBase;
-        
+        this.url = url;
     }
 
    
@@ -53,8 +56,10 @@ public class Peleador {
         return defensaBase;
     }
 
-   
-  
+    public String getUrl() {
+        return url;
+    }
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -75,5 +80,6 @@ public class Peleador {
         System.out.println("Puntos de Vida: " + puntosVida);
         System.out.println("Energía: " + energia);
         System.out.println("Defensa Base: " + defensaBase);
+        System.out.println("URL: " + url);
     }
 }

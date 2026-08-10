@@ -10,7 +10,7 @@ import jar.IService.IArmaService;
 import jar.entidades.Arma;
 
 @RestController
-@RequestMapping("/api/characters")
+@RequestMapping("/api/Arma")
 public class ArmaController {
 @Autowired
 private IArmaService pService;

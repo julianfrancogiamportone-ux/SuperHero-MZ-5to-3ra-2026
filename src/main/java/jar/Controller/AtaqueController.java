@@ -10,7 +10,7 @@ import jar.IService.IAtaqueService;
 import jar.entidades.Ataque;
 
 @RestController
-@RequestMapping("/api/characters")
+@RequestMapping("/api/Ataque")
 public class AtaqueController {
 @Autowired
 private IAtaqueService pService;
