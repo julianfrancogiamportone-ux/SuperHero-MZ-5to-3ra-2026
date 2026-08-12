@@ -2,7 +2,7 @@
 //api de base de datos, gestionado en el controller
 
 const API_DRAGONBALL = 'http://localhost:8080/api/characters';
-const API_NARUTO = 'http://localhost:8081/api/characters';
+const API_NARUTO = 'http://localhost:8081/api/peleadores'; 
 
 //elementos del html
 const fighter1Select = document.getElementById('fighter1');
@@ -35,17 +35,17 @@ loadFighters();
 }
 //Llenar las listas
 //por cada peleador creamos un option en el selector
-
 function loadFighters() {
 [...characters, ...ninjas].forEach(fighter => {
+const armas = fighter.armas || fighter.listaarmas || [];
 const option1 = document.createElement('option');
 option1.value = JSON.stringify(fighter);
-option1.text = `${fighter.nombre} (${fighter.armas[0].nombre || fighter.aldea})`;
+option1.text = `${fighter.nombre} (${armas[0]?.nombre || fighter.aldea || ''})`;
 fighter1Select.appendChild(option1);
 
 const option2 = document.createElement('option');
 option2.value = JSON.stringify(fighter);
-option2.text = `${fighter.nombre} (${fighter.raza || fighter.aldea})`;
+option2.text = `${fighter.nombre} (${fighter.raza || fighter.aldea || ''})`;
 fighter2Select.appendChild(option2);
 });
 updateFighterDisplay(fighter1Select, fighter1Image, 'fighter1Weapon');
@@ -54,17 +54,17 @@ updateFighterDisplay(fighter2Select, fighter2Image, 'fighter2Weapon');
 
 function updateFighterDisplay(selectEl, imgEl, weaponElId) {
 const selected = JSON.parse(selectEl.value);
-imgEl.src = selected.url || 'placeholder.png';
+imgEl.src = selected.url || selected.url_imagen || 'placeholder.png';
 
+const armas = selected.armas || selected.listaarmas || [];
 const weaponEl = document.getElementById(weaponElId);
-if (selected.armas && selected.armas.length > 0) {
-const nombresArmas = selected.armas.map(a => a.nombre).join(', ');
+if (armas.length > 0) {
+const nombresArmas = armas.map(a => a.nombre).join(', ');
 weaponEl.textContent = `⚔️ Arma: ${nombresArmas}`;
 } else {
 weaponEl.textContent = '⚔️ Sin arma';
 }
 }
-
 
 //Reaccionar a los cambios
 // Actualizar la imagen al seleccionar un personaje y arma
