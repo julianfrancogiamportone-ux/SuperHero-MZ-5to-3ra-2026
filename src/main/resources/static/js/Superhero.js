@@ -20,6 +20,7 @@ async function fetchData() {
 try {
 const responseDB = await fetch(API_DRAGONBALL);
 characters = await responseDB.json();
+console.log(characters);
 } catch (error) {
 console.error('Error al cargar los personajes:', error);
 }
@@ -34,11 +35,12 @@ loadFighters();
 }
 //Llenar las listas
 //por cada peleador creamos un option en el selector
+
 function loadFighters() {
 [...characters, ...ninjas].forEach(fighter => {
 const option1 = document.createElement('option');
 option1.value = JSON.stringify(fighter);
-option1.text = `${fighter.nombre} (${fighter.raza || fighter.aldea})`;
+option1.text = `${fighter.nombre} (${fighter.armas[0].nombre || fighter.aldea})`;
 fighter1Select.appendChild(option1);
 
 const option2 = document.createElement('option');
@@ -46,21 +48,34 @@ option2.value = JSON.stringify(fighter);
 option2.text = `${fighter.nombre} (${fighter.raza || fighter.aldea})`;
 fighter2Select.appendChild(option2);
 });
-const selected = JSON.parse(fighter1Select.value);
-fighter1Image.src = selected.url|| 'placeholder1.png';
-const selected2 = JSON.parse(fighter2Select.value);
-fighter2Image.src = selected2.url|| 'placeholder2.png';
+updateFighterDisplay(fighter1Select, fighter1Image, 'fighter1Weapon');
+updateFighterDisplay(fighter2Select, fighter2Image, 'fighter2Weapon');
 }
+
+function updateFighterDisplay(selectEl, imgEl, weaponElId) {
+const selected = JSON.parse(selectEl.value);
+imgEl.src = selected.url || 'placeholder.png';
+
+const weaponEl = document.getElementById(weaponElId);
+if (selected.armas && selected.armas.length > 0) {
+const nombresArmas = selected.armas.map(a => a.nombre).join(', ');
+weaponEl.textContent = `⚔️ Arma: ${nombresArmas}`;
+} else {
+weaponEl.textContent = '⚔️ Sin arma';
+}
+}
+
+
 //Reaccionar a los cambios
-// Actualizar la imagen al seleccionar un personaje
+// Actualizar la imagen al seleccionar un personaje y arma
 fighter1Select.addEventListener('change', () => {
-const selected = JSON.parse(fighter1Select.value);
-fighter1Image.src = selected.url || 'placeholder1.png';
+updateFighterDisplay(fighter1Select, fighter1Image, 'fighter1Weapon');
 });
 fighter2Select.addEventListener('change', () => {
-const selected = JSON.parse(fighter2Select.value);
-fighter2Image.src = selected.url|| 'placeholder2.png';
+updateFighterDisplay(fighter2Select, fighter2Image, 'fighter2Weapon');
 });
+
+
 //La Lógica de Batalla
 fightButton.addEventListener('click', () => {
 const fighter1 = JSON.parse(fighter1Select.value);

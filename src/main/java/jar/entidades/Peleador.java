@@ -4,6 +4,8 @@ package jar.entidades;
 import jakarta.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 
 public class Peleador {
@@ -13,11 +15,13 @@ public class Peleador {
 
     @ManyToMany
     @JoinTable(name = "peleador_arma", joinColumns = @JoinColumn(name = "peleador_id"), inverseJoinColumns = @JoinColumn(name = "arma_id"))
-
+    @JsonIgnoreProperties("personajes") // <- corta el loop del lado de Arma
     private List<Arma> armas;
+
     @ManyToMany
     @JoinTable(name = "peleador_ataque", joinColumns = @JoinColumn(name = "peleador_id"), inverseJoinColumns = @JoinColumn(name = "ataque_id"))
-
+    @JsonIgnoreProperties("personajes")// <- corta el loop del lado de Ataque
+   
     private List<Ataque> ataques;
     private String nombre;
     private int puntosVida;
@@ -38,7 +42,7 @@ public class Peleador {
         this.url = url;
     }
 
-   
+   //Getters____________________________________________________
 
     public String getNombre() {
         return nombre;
@@ -60,6 +64,16 @@ public class Peleador {
         return url;
     }
 
+    public List<Arma> getArmas() {
+        return armas;
+    }
+
+    public List<Ataque> getAtaques() {
+        return ataques;
+    }
+
+    //Setters____________________________________________________
+
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
@@ -75,6 +89,14 @@ public class Peleador {
     public void setDefensaBase(double defensaBase) {
         this.defensaBase = defensaBase;
     }
+     public void setArmas(List<Arma> armas) {
+        this.armas = armas;
+    }
+
+    public void setAtaques(List<Ataque> ataques) {
+        this.ataques = ataques;
+    }
+
     public void imprimir() {
         System.out.println("Nombre: " + nombre);
         System.out.println("Puntos de Vida: " + puntosVida);
