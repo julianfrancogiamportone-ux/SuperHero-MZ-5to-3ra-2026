@@ -10,7 +10,9 @@ text-align: center;
 padding: 20px;
 }
 h1 {
-font-size: 42px;
+font-family: 'Bangers', cursive;
+font-size: 48px;
+letter-spacing: 2px;
 color: #ffd93b;
 -webkit-text-stroke: 2px #000;
 text-shadow:
@@ -19,7 +21,6 @@ text-shadow:
 2px -2px 0 #000,
 -2px 2px 0 #000,
 0 6px 10px rgba(0,0,0,0.5);
-letter-spacing: 1px;
 }
 #fight-container {
 display: flex;
@@ -69,17 +70,27 @@ color: #222;
 }
 button {
 margin-top: 20px;
-padding: 30px 60px;
+padding: 20px 50px;
 font-size: 28px;
-border: none;
+border: 3px solid #000;
 border-radius: 10px;
-background-color: transparent;
-color: transparent;
+background-color: #ffd93b !important;
+color: #000;
 cursor: pointer;
-transition: background 0.3s ease;
+font-family: 'Bangers', cursive;
+letter-spacing: 2px;
+text-shadow: 1px 1px 0 #fff;
+box-shadow: 0 6px 0 #c9a300, 0 8px 16px rgba(0,0,0,0.4);
+transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 button:hover {
-background-color: transparent;
+background-color: #ffe873;
+transform: translateY(-2px);
+box-shadow: 0 8px 0 #c9a300, 0 10px 20px rgba(0,0,0,0.5);
+}
+button:active {
+transform: translateY(4px);
+box-shadow: 0 2px 0 #c9a300, 0 4px 8px rgba(0,0,0,0.3);
 }
 .fighter-img {
 width: 200px;

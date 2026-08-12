@@ -3,6 +3,8 @@ package jar.entidades;
 import jakarta.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 public class Arma {
     @Id
@@ -10,6 +12,8 @@ public class Arma {
     private Long id;
 
     @ManyToMany(mappedBy = "armas")
+    @JsonIgnore // <- Arma no necesita devolver la lista de peleadores al frontend
+    
     private List<Peleador> personajes;
     private String nombre;
     private int bonificadordanio;
